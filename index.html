@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Background music -->
-    <audio autoplay loop>
+    <audio loop>
         <source src="sounds/jazz.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -249,6 +249,7 @@
         function lowerVolume() {
             var bgMusic = document.querySelector('audio');
             bgMusic.volume = 0.1;
+            bgMusic.play();
         }
         function togglePlayPause() {
             var bgMusic = document.querySelector('audio');
