@@ -64,3 +64,78 @@ h5 {
 .audio-play-overlay button:hover {
     opacity: 0.7;
 }
+
+/* Modal base styles for backdrop */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    margin-top:12%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    /* background-color: rgba(0,0,0,0.6); Darker backdrop for more focus */
+    padding-top: 100px; /* Add some space on top */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Adapt to your design */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* Subtle shadow */
+    animation: modalFadeIn .5s; /* Fade-in effect */
+  }
+  
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Modal Heading and Text */
+  .modal h2 {
+    color: #563232; /* Dark brown to match theme */
+    font-family: 'Times New Roman', serif; /* Elegant font */
+  }
+  
+  .modal p {
+    font-family: 'Georgia', serif; /* Complementary elegant font */
+    color: #444; /* Soft black for readability */
+  }
+  
+  /* Button inside the modal */
+  .modal button {
+    background-color: #563232; /* Theme color */
+    color: white;
+    padding: 10px 20px;
+    margin: 15px 0; /* Some space above */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners for the button */
+    font-size: 18px;
+  }
+  
+  .modal button:hover {
+    background-color: #6d4a3e; /* A slightly lighter brown */
+  }
+  
+  /* Keyframes for fade-in animation */
+  @keyframes modalFadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+  
