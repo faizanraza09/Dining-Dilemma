@@ -2,54 +2,65 @@
 <html>
 
 <head>
-    <title>Dinner Dilemma</title>
+    <title>Dining Dilemma</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Background music -->
+    <audio autoplay loop>
+        <source src="sounds/jazz.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </head>
 
-<body>
+<body onload="lowerVolume()">
 
     <!-- Links (sit on top) -->
-    <div class="w3-top">
-        <div class="w3-row w3-padding w3-black">
+    <div class="w3-top w3-sand">
+        <div class="w3-row w3-padding w3-sand">
             <div class="w3-col s3">
-                <a href="#" class="w3-button w3-block w3-black">HOME</a>
+                <a href="#" class="w3-button w3-block w3-sand">HOME</a>
             </div>
             <div class="w3-col s3">
-                <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+                <a href="#about" class="w3-button w3-block w3-sand">ABOUT</a>
             </div>
             <div class="w3-col s3">
-                <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
+                <a href="#menu" class="w3-button w3-block w3-sand">MENU</a>
             </div>
             <div class="w3-col s3">
-                <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+                <a href="#where" class="w3-button w3-block w3-sand">WHERE</a>
             </div>
         </div>
     </div>
 
     <!-- Header with image -->
-    <header class="bgimg w3-display-container" id="home">
-        <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-            <span class="w3-tag">Open from 6am to 5pm</span>
-        </div>
-        <!-- <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">the<br>Cafe</span>
-  </div> -->
-        <div class="w3-display-bottomright w3-center w3-padding-large">
-            <span class="w3-text-white">15 Adr street, 5015</span>
+    <header id="home" class="w3-display-container">
+        <!-- Background image container with blur effect -->
+        <div class="bgimg"></div>
+
+        <!-- Play button overlay, now outside the blurred background container -->
+        <div class="audio-play-overlay">
+            <audio id="argumentAudio">
+                <source src="sounds/ambience.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <!-- Play button-->
+            <button id="playButton" onclick="togglePlayPause()">Play</button>
+            <!-- Pause button, initially hidden -->
+            <button id="pauseButton" onclick="togglePlayPause()" style="display:none;">Pause</button>
         </div>
     </header>
 
     <!-- Add a background color and large text to the whole page -->
-    <div class="w3-sand w3-grayscale w3-large">
+    <div class="w3-sand w3-large w3-padding-64">
 
         <!-- About Container -->
         <div class="w3-container" id="about">
             <div class="w3-content" style="max-width:700px">
-                <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT CHEZ RIOUX & PETTIGREW</span>
+                <h5 class="w3-center w3-padding-24"><span class="w3-wide">ABOUT CHEZ RIOUX & PETTIGREW</span>
                 </h5>
                 <p>Welcome to Chez Rioux & Pettigrew, where every dish tells a story of craftsmanship and elegance.
                     Nestled in the heart of Quebec, our bistro exudes charm and sophistication, inviting you to
@@ -63,8 +74,8 @@
                     <p>Chef, Connoisseur, and Proprietor: Liam Brown</p>
                 </div>
                 <img src="images/outside.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
-                <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
-                <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
+                <p><strong>Opening hours:</strong> everyday from 5:30pm to 10pm.</p>
+                <p><strong>Address:</strong> 160 Rue Saint-Paul, Québec, QC G1K 3W1, Canada</p>
             </div>
         </div>
 
@@ -72,32 +83,33 @@
         <div class="w3-container" id="menu">
             <div class="w3-content" style="max-width:700px">
 
-                <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+                <h5 class="w3-center w3-padding-24"><span class="w3-wide">THE MENU</span></h5>
 
                 <div class="w3-row w3-center w3-card w3-padding">
                     <a href="javascript:void(0)" onclick="openMenu(event, 'Appetizers');" id="myLink">
-                        <div class="w3-col s6 tablink">Appetizers</div>
+                        <div class="w3-col s2 tablink">Appetizers</div>
                     </a>
                     <a href="javascript:void(0)" onclick="openMenu(event, 'Salads');">
-                        <div class="w3-col s6 tablink">Salads</div>
+                        <div class="w3-col s2 tablink">Salads</div>
                     </a>
                     <a href="javascript:void(0)" onclick="openMenu(event, 'Entrees');">
-                        <div class="w3-col s6 tablink">Entrees</div>
+                        <div class="w3-col s2 tablink">Entrees</div>
                     </a>
                     <a href="javascript:void(0)" onclick="openMenu(event, 'Pasta');">
-                        <div class="w3-col s6 tablink">Pasta</div>
+                        <div class="w3-col s2 tablink">Pasta</div>
                     </a>
                     <a href="javascript:void(0)" onclick="openMenu(event, 'Desserts');">
-                        <div class="w3-col s6 tablink">Desserts</div>
+                        <div class="w3-col s2 tablink">Desserts</div>
                     </a>
                     <a href="javascript:void(0)" onclick="openMenu(event, 'Wines');">
-                        <div class="w3-col s6 tablink">Wines</div>
+                        <div class="w3-col s2 tablink">Wines</div>
                     </a>
                 </div>
 
-                <div id="Appetizers" class="w3-container menu w3-padding-48 w3-card">
+                <div id="Appetizers" class="w3-container menu w3-padding-24 w3-card">
                     <h5>Baked Brie en Croûte</h5>
-                    <p class="w3-text-grey">Baked Brie en Croûte with Raspberry Compote, Served with Warm Baguette Slices</p>
+                    <p class="w3-text-grey">Baked Brie en Croûte with Raspberry Compote, Served with Warm Baguette
+                        Slices</p>
                     <br>
                     <h5>Bacon-Wrapped Shrimp</h5>
                     <p class="w3-text-grey">Jumbo Shrimp Wrapped in Crispy Bacon, Served with a Tangy Cocktail Sauce</p>
@@ -115,7 +127,7 @@
                         with Rustic Baguette</p>
                 </div>
 
-                <div id="Salads" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+                <div id="Salads" class="w3-container menu w3-padding-24 w3-card" style="display:none">
                     <h5>Salade Niçoise</h5>
                     <p class="w3-text-grey">Fresh Mixed Greens with Tuna, Haricots Verts, Olives, Tomatoes, Hard-Boiled
                         Eggs, and Anchovies, Tossed in a Lemon-Dijon Vinaigrette</p><br>
@@ -133,7 +145,7 @@
                         and Cocktail Sauce</p>
                 </div>
 
-                <div id="Entrees" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+                <div id="Entrees" class="w3-container menu w3-padding-24 w3-card" style="display:none">
                     <h5>Coq au Vin</h5>
                     <p class="w3-text-grey">Slow-Cooked Chicken in Red Wine Sauce with Mushrooms, Pearl Onions, and
                         Bacon Lardons, Served with Mashed Potatoes</p><br>
@@ -151,7 +163,7 @@
                         Tomatoes, and Fresh Herbs, Served with Crusty Baguequette</p>
                 </div>
 
-                <div id="Pasta" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+                <div id="Pasta" class="w3-container menu w3-padding-24 w3-card" style="display:none">
                     <h5>Spaghetti aux Fruits de Mer</h5>
                     <p class="w3-text-grey">Spaghetti Pasta with Mixed Seafood in a White Wine Garlic Sauce, Topped with
                         Fresh Parsley and Parmesan Cheese</p><br>
@@ -169,7 +181,7 @@
                         Fresh Sage</p>
                 </div>
 
-                <div id="Desserts" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+                <div id="Desserts" class="w3-container menu w3-padding-24 w3-card" style="display:none">
                     <h5>Tarte au Citron</h5>
                     <p class="w3-text-grey">Classic French Lemon Tart with Shortcrust Pastry and Tangy Lemon Curd,
                         Served with Whipped Cream and Berries</p><br>
@@ -187,7 +199,7 @@
                         Garnished with Chocolate Shavings</p>
                 </div>
 
-                <div id="Wines" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+                <div id="Wines" class="w3-container menu w3-padding-24 w3-card" style="display:none">
                     <h5>Champagne</h5>
                     <p class="w3-text-grey">Moët & Chandon Brut Impérial, Veuve Clicquot Yellow Label Brut, Dom Pérignon
                         Vintage</p><br>
@@ -203,18 +215,15 @@
                     <h5>Dessert Wines</h5>
                     <p class="w3-text-grey">Château d'Arche Sauternes, Riesling Auslese, Pedro Ximénez Sherry</p>
                 </div>
-
-                <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
             </div>
         </div>
 
         <!-- Contact/Area Container -->
         <div class="w3-container" id="where" style="padding-bottom:32px;">
             <div class="w3-content" style="max-width:700px">
-                <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND US</span></h5>
-                <p>Find us at some address at some place.</p>
-                <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
-                <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or
+                <h5 class="w3-center w3-padding-48"><span class="w3-wide">WHERE TO FIND US</span></h5>
+                <img src="images/map.png" class="w3-image" style="width:100%">
+                <p>We offer full-service catering for any event, large or
                     small. We understand your needs and we will cater the food to satisfy the biggerst criteria
                     of them all, both look and taste.</p>
                 <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
@@ -227,7 +236,7 @@
                             required name="date" value="2020-11-16T20:00"></p>
                     <p><input class="w3-input w3-padding-16 w3-border" type="text"
                             placeholder="Message \ Special requirements" required name="Message"></p>
-                    <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
+                    <p><button class="w3-button w3-white" type="submit">SEND MESSAGE</button></p>
                 </form>
             </div>
         </div>
@@ -235,13 +244,31 @@
         <!-- End page content -->
     </div>
 
-    <!-- Footer -->
-    <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
-                class="w3-hover-text-green">w3.css</a></p>
-    </footer>
 
     <script>
+        function lowerVolume() {
+            var bgMusic = document.querySelector('audio');
+            bgMusic.volume = 0.1;
+        }
+        function togglePlayPause() {
+            var bgMusic = document.querySelector('audio');
+            var argumentAudio = document.getElementById('argumentAudio');
+            var playButton = document.getElementById('playButton');
+            var pauseButton = document.getElementById('pauseButton');
+
+            if (argumentAudio.paused) {
+                bgMusic.pause()
+                argumentAudio.play();
+                playButton.style.display = 'none';
+                pauseButton.style.display = '';
+            } else {
+                argumentAudio.pause();
+                bgMusic.play();
+                playButton.style.display = '';
+                pauseButton.style.display = 'none';
+            }
+        }
+
         // Tabbed Menu
         function openMenu(evt, menuName) {
             var i, x, tablinks;
